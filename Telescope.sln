@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telescope", "Telescope\Telescope.csproj", "{213CDBB4-9338-49BD-AFF6-5880BF5A037C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telescope.DataAccess", "Telescope.DataAccess\Telescope.DataAccess.csproj", "{C39E035F-01CA-4B83-B930-372011E489C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telescope.Models", "Telescope.Models\Telescope.Models.csproj", "{64C96CD3-F637-49A0-8857-C2744A794398}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telescope.Utility", "Telescope.Utility\Telescope.Utility.csproj", "{6D21BCDB-6414-487F-9D50-F1750ED329CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{213CDBB4-9338-49BD-AFF6-5880BF5A037C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213CDBB4-9338-49BD-AFF6-5880BF5A037C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213CDBB4-9338-49BD-AFF6-5880BF5A037C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213CDBB4-9338-49BD-AFF6-5880BF5A037C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C39E035F-01CA-4B83-B930-372011E489C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39E035F-01CA-4B83-B930-372011E489C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C39E035F-01CA-4B83-B930-372011E489C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C39E035F-01CA-4B83-B930-372011E489C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C96CD3-F637-49A0-8857-C2744A794398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C96CD3-F637-49A0-8857-C2744A794398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C96CD3-F637-49A0-8857-C2744A794398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C96CD3-F637-49A0-8857-C2744A794398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D21BCDB-6414-487F-9D50-F1750ED329CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D21BCDB-6414-487F-9D50-F1750ED329CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D21BCDB-6414-487F-9D50-F1750ED329CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D21BCDB-6414-487F-9D50-F1750ED329CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A0A0B51-7C72-4D1E-A5F7-2CA368C499D6}
+	EndGlobalSection
+EndGlobal
