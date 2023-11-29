@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using Telescope.DataAccess.Data;
 using Telescope.DataAccess.Repository.IRepository;
 using Telescope.Models;
 using Telescope.Models.ViewModels;
+using Telescope.Utility;
+using System.Data;
 
 namespace Telescope.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
