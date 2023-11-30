@@ -30,8 +30,8 @@ namespace Telescope.Areas.Customer.Controllers
             };
             foreach (var cart in ShoppingCartVM.ShoppingCartList)
             {
-                double price = GetPriceBasedOnQuantity(cart);
-                ShoppingCartVM.OrderTotal += (price * cart.Count);
+                cart.Price = GetPriceBasedOnQuantity(cart);
+                ShoppingCartVM.OrderTotal += (cart.Price * cart.Count);
             }
 
             return View(ShoppingCartVM);
