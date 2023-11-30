@@ -165,10 +165,17 @@ namespace Telescope.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 user.StreetAddress = Input.StreetAddress;
                 user.Name = Input.Name;
-                user.StreetAddress = Input.StreetAddress;
                 user.Ward = Input.Ward;
+                user.District = Input.District;
+                user.Province = Input.Province;
                 user.PostalCode = Input.PostalCode;
                 user.PhoneNumber = Input.PhoneNumber;
+
+                if (Input.Role == SD.Role_Company)
+                {
+                    user.CompanyId=Input.CompanyId;
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
