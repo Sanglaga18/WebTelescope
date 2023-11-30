@@ -2,6 +2,8 @@ using Telescope.DataAccess.Repository.IRepository;
 using Telescope.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 
 namespace Telescope.Areas.Customer.Controllers
@@ -22,6 +24,7 @@ namespace Telescope.Areas.Customer.Controllers
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(productList);
         }
+
         public IActionResult Details(int productId)
         {
             ShoppingCart cart = new()
@@ -32,6 +35,22 @@ namespace Telescope.Areas.Customer.Controllers
             };
             return View(cart);
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            shoppingCart.ApplicationUserId= userId;
+
+            _unitOfWork.ShoppingCart.Add(shoppingCart);
+            _unitOfWork.Save();
+
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Privacy()
         {
             return View();
