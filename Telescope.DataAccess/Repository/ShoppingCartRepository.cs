@@ -25,4 +25,3 @@ namespace Telescope.DataAccess.Repository
         }
     }
 }
-}
