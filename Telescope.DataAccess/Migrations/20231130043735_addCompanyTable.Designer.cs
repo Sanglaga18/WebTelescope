@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Telescope.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using Telescope.DataAccess.Data;
 namespace Telescope.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231130043735_addCompanyTable")]
+    partial class addCompanyTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,41 +306,6 @@ namespace Telescope.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            District = "Quận 11",
-                            Name = "NGUYEN MINH HOANG",
-                            PhoneNumber = "6669990000",
-                            PostalCode = "12121",
-                            Province = "Tp. Hồ Chí Minh",
-                            StreetAddress = "351A Lạc Long Quân",
-                            Ward = "Phường 5"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            District = "Quận 11",
-                            Name = "TRAN MINH KHOI",
-                            PhoneNumber = "1113335555",
-                            PostalCode = "12121",
-                            Province = "Tp. Hồ Chí Minh",
-                            StreetAddress = "351A Lạc Long Quân",
-                            Ward = "Phường 5"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            District = "Quận 5",
-                            Name = "LE VAN QUY",
-                            PhoneNumber = "7779990000",
-                            PostalCode = "12121",
-                            Province = "Tp. Hồ Chí Minh",
-                            StreetAddress = "280 An Dương Vương",
-                            Ward = "Phường 4"
-                        });
                 });
 
             modelBuilder.Entity("Telescope.Models.Product", b =>
