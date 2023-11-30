@@ -20,6 +20,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Telescope.DataAccess.Repository.IRepository;
 using Telescope.Models;
 using Telescope.Utility;
 
@@ -34,6 +35,7 @@ namespace Telescope.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -41,8 +43,10 @@ namespace Telescope.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _roleManager = roleManager;
             _userManager = userManager;
             _userStore = userStore;
@@ -117,6 +121,9 @@ namespace Telescope.Areas.Identity.Pages.Account
             public string? Province { get; set; }
             public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; }
+            public int? CompanyId { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> CompanyList { get; set; }
         }
 
 
@@ -135,6 +142,11 @@ namespace Telescope.Areas.Identity.Pages.Account
                 {
                     Text = i,
                     Value = i
+                }),
+                CompanyList = _unitOfWork.Company.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
                 })
             };
             ReturnUrl = returnUrl;

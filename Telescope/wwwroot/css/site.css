@@ -553,3 +553,7 @@ bg-success {
         background-color: #578553;
         border-color: #578553;
     }
+
+.custom-mb-6 {
+    margin-bottom: 4rem;
+}
