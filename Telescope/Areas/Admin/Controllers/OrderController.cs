@@ -4,6 +4,7 @@ using Telescope.Models;
 
 namespace Telescope.Areas.Admin.Controllers
 {
+    [Area("admin")]
     public class OrderController : Controller
     {
 
