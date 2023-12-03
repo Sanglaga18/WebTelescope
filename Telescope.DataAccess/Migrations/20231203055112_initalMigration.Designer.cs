@@ -12,7 +12,7 @@ using Telescope.DataAccess.Data;
 namespace Telescope.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231203044725_initalMigration")]
+    [Migration("20231203055112_initalMigration")]
     partial class initalMigration
     {
         /// <inheritdoc />

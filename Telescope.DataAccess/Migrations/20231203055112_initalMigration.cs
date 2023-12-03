@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Telescope.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addTestProperty : Migration
+    public partial class initalMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
