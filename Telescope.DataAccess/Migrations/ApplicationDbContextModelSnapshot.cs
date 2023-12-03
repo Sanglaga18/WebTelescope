@@ -480,6 +480,9 @@ namespace Telescope.DataAccess.Migrations
                     b.Property<double>("Price50")
                         .HasColumnType("float");
 
+                    b.Property<int>("TestProperty")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -501,6 +504,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 90.0,
                             Price100 = 80.0,
                             Price50 = 85.0,
+                            TestProperty = 0,
                             Title = "Bút Bi Thiên Long"
                         },
                         new
@@ -513,6 +517,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 30.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
+                            TestProperty = 0,
                             Title = "Bút lông dầu Thiên Long"
                         },
                         new
@@ -525,6 +530,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 50.0,
                             Price100 = 35.0,
                             Price50 = 40.0,
+                            TestProperty = 0,
                             Title = "TẬP HỌC SINH 96 TRANG 4 Ô LY VUÔNG 70 GSM ĐIỂM 10"
                         },
                         new
@@ -537,6 +543,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 65.0,
                             Price100 = 55.0,
                             Price50 = 60.0,
+                            TestProperty = 0,
                             Title = "TẬP HỌC SINH 96 TRANG 5 Ô LY VUÔNG 80 GSM ĐIỂM 10"
                         },
                         new
@@ -549,6 +556,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 27.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
+                            TestProperty = 0,
                             Title = "Thước dẻo PVC 20cm Điểm 10"
                         },
                         new
@@ -561,6 +569,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 23.0,
                             Price100 = 20.0,
                             Price50 = 22.0,
+                            TestProperty = 0,
                             Title = "Thước dẻo PVC 30cm Điểm 10"
                         });
                 });

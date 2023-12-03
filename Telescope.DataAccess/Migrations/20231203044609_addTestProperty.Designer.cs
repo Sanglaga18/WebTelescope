@@ -12,8 +12,8 @@ using Telescope.DataAccess.Data;
 namespace Telescope.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231129135158_UpdateNameToBeStringApplicationUser")]
-    partial class UpdateNameToBeStringApplicationUser
+    [Migration("20231203044609_addTestProperty")]
+    partial class addTestProperty
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -273,6 +273,185 @@ namespace Telescope.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Telescope.Models.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StreetAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ward")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            District = "Quận 11",
+                            Name = "NGUYEN MINH HOANG",
+                            PhoneNumber = "6669990000",
+                            PostalCode = "12121",
+                            Province = "Tp. Hồ Chí Minh",
+                            StreetAddress = "351A Lạc Long Quân",
+                            Ward = "Phường 5"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            District = "Quận 11",
+                            Name = "TRAN MINH KHOI",
+                            PhoneNumber = "1113335555",
+                            PostalCode = "12121",
+                            Province = "Tp. Hồ Chí Minh",
+                            StreetAddress = "351A Lạc Long Quân",
+                            Ward = "Phường 5"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            District = "Quận 5",
+                            Name = "LE VAN QUY",
+                            PhoneNumber = "7779990000",
+                            PostalCode = "12121",
+                            Province = "Tp. Hồ Chí Minh",
+                            StreetAddress = "280 An Dương Vương",
+                            Ward = "Phường 4"
+                        });
+                });
+
+            modelBuilder.Entity("Telescope.Models.OrderDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderHeaderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("Telescope.Models.OrderHeader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Carrier")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("District")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrderStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("OrderTotal")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateOnly>("PaymentDueDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("PaymentIntentId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ShippingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrackingNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ward")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.ToTable("OrderHeaders");
+                });
+
             modelBuilder.Entity("Telescope.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -304,6 +483,9 @@ namespace Telescope.DataAccess.Migrations
                     b.Property<double>("Price50")
                         .HasColumnType("float");
 
+                    b.Property<int>("TestProperty")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -325,6 +507,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 90.0,
                             Price100 = 80.0,
                             Price50 = 85.0,
+                            TestProperty = 0,
                             Title = "Bút Bi Thiên Long"
                         },
                         new
@@ -337,6 +520,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 30.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
+                            TestProperty = 0,
                             Title = "Bút lông dầu Thiên Long"
                         },
                         new
@@ -349,6 +533,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 50.0,
                             Price100 = 35.0,
                             Price50 = 40.0,
+                            TestProperty = 0,
                             Title = "TẬP HỌC SINH 96 TRANG 4 Ô LY VUÔNG 70 GSM ĐIỂM 10"
                         },
                         new
@@ -361,6 +546,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 65.0,
                             Price100 = 55.0,
                             Price50 = 60.0,
+                            TestProperty = 0,
                             Title = "TẬP HỌC SINH 96 TRANG 5 Ô LY VUÔNG 80 GSM ĐIỂM 10"
                         },
                         new
@@ -373,6 +559,7 @@ namespace Telescope.DataAccess.Migrations
                             Price = 27.0,
                             Price100 = 20.0,
                             Price50 = 25.0,
+                            TestProperty = 0,
                             Title = "Thước dẻo PVC 20cm Điểm 10"
                         },
                         new
@@ -385,13 +572,44 @@ namespace Telescope.DataAccess.Migrations
                             Price = 23.0,
                             Price100 = 20.0,
                             Price50 = 22.0,
+                            TestProperty = 0,
                             Title = "Thước dẻo PVC 30cm Điểm 10"
                         });
+                });
+
+            modelBuilder.Entity("Telescope.Models.ShoppingCart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ShoppingCarts");
                 });
 
             modelBuilder.Entity("Telescope.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("District")
                         .HasColumnType("nvarchar(max)");
@@ -411,6 +629,8 @@ namespace Telescope.DataAccess.Migrations
 
                     b.Property<string>("Ward")
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -466,6 +686,36 @@ namespace Telescope.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Telescope.Models.OrderDetail", b =>
+                {
+                    b.HasOne("Telescope.Models.OrderHeader", "OrderHeader")
+                        .WithMany()
+                        .HasForeignKey("OrderHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Telescope.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OrderHeader");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Telescope.Models.OrderHeader", b =>
+                {
+                    b.HasOne("Telescope.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
             modelBuilder.Entity("Telescope.Models.Product", b =>
                 {
                     b.HasOne("Telescope.Models.Category", "Category")
@@ -475,6 +725,34 @@ namespace Telescope.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Telescope.Models.ShoppingCart", b =>
+                {
+                    b.HasOne("Telescope.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Telescope.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Telescope.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Telescope.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId");
+
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }
