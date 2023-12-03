@@ -31,6 +31,7 @@ namespace Telescope.DataAccess.Repository
                 objFromDb.Price100 = obj.Price100;
                 objFromDb.Description = obj.Description;
                 objFromDb.CategoryId = obj.CategoryId;
+                objFromDb.ProductImages = obj.ProductImages;
                 //if (obj.ImageUrl != null)
                 //{
                 //    objFromDb.ImageUrl = obj.ImageUrl;
